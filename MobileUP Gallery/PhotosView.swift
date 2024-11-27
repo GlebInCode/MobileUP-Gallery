@@ -21,13 +21,19 @@ struct PhotosView: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(0..<photos.count, id: \.self) { index in
-                    Image(photos[index])
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: itemSize, height: itemSize)
-                        .clipped()
+                    NavigationLink(destination: PhotoDetailView(photo: photos[index])) {
+                        Image(photos[index])
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: itemSize, height: itemSize)
+                            .clipped()
+                    }
                 }
             }
         }
     }
 }
+
+
+
+

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab = "videos"
+    @State private var selectedTab = "photos"
 
     var body: some View {
         NavigationStack {
@@ -28,21 +28,18 @@ struct ContentView: View {
                     VideosView()
                 }
             }
-
-            Spacer()
-
-                .navigationTitle("MobileUp Gallery")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            print("Exit button tapped")
-                        }) {
-                            Text("Выход")
-                        }
-                        .foregroundColor(.black)
+            .navigationTitle("MobileUp Gallery")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        print("Exit button tapped")
+                    }) {
+                        Text("Выход")
                     }
+                    .foregroundColor(.black)
                 }
+            }
         }
     }
 }
