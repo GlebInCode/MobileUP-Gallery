@@ -8,14 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedTab = "photos"
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Picker("Выберите раздел", selection: $selectedTab) {
+                    Text("Фото").tag("photos")
+                    Text("Видео").tag("videos")
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.top, 10)
+                .padding(.leading, 16)
+                .padding(.trailing, 16)
+
+                if selectedTab == "photos" {
+                    PhotosView()
+                } else {
+                    VideosView()
+                }
+            }
+            .navigationTitle("MobileUp Gallery")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        print("Exit button tapped")
+                    }) {
+                        Text("Выход")
+                    }
+                    .foregroundColor(.black)
+                }
+            }
         }
-        .padding()
     }
 }
 
